@@ -1,0 +1,13 @@
+.nav-bar-header {
+    margin-bottom: 2rem;
+    font-size: rem(26px);
+    background-color: lighten($clr5, 5%);
+    padding: rem(20px);
+    gap: rem(20px);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+    
+    a {
+        padding-left: 1rem;
+        color: $clr4;
+    }
+}

@@ -1,0 +1,10 @@
+.toy-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+.toy-list .car-preview .custom-card {
+  align-items: flex-start;
+}
+.toy-list .car-preview .custom-card header {
+  font-size: 1em;
+}
