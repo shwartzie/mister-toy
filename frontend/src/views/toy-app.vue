@@ -1,8 +1,10 @@
 <template>
     <section class="toy-app">
-        <el-button class="add-toy-btn" type="primary" @click="goToEdit">
-            Add a new toy
-        </el-button>
+        <div v-if="user.isAdmin">
+            <el-button class="add-toy-btn" type="primary" @click="goToEdit">
+                Add a new toy
+            </el-button>
+        </div>
         <toy-filter @setFilter="setFilter" />
         <toy-list @removeToy="removeToy" :toysToShow="toysToShow" :user="user" />
         <toy-chart v-if="mappedLabels" :mappedLabels="mappedLabels" />

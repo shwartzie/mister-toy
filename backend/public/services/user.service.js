@@ -15,6 +15,7 @@ window.userService = userService
 async function login(credentials) {
     try {
         const { data: users } = await storageService.query(STORAGE_KEY)
+        console.log(users)
         const user = users.find(
             (user) =>
                 user.username === credentials.username &&

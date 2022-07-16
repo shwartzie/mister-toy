@@ -7,7 +7,7 @@
             </template>
 
             <template #footer>
-                <div class="btn-group" v-if="user">
+                <div class="btn-group" v-if="user.isAdmin">
                     <button @click="goToEdit" class="btn btn-primary">
                         edit
                     </button>
