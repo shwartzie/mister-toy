@@ -11,7 +11,7 @@
 			<el-input type="txt" v-model="ruleForm.username" autocomplete="off"></el-input>
 		</el-form-item>
 		<el-form-item label="Password" prop="pass">
-			<el-input type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
+			<el-input type="password" v-model="ruleForm.password" autocomplete="off"></el-input>
 		</el-form-item>
 		<el-form-item>
 			<el-button type="primary" @click="submitForm(ruleForm)">Submit</el-button>
@@ -34,16 +34,15 @@ const validateUser = (rule, value, callback) => {
 	}
 }
 export default {
-    emits: [''],
 	data() {
 		return {
 			ruleForm: {
 				username: '',
-				pass: '',
+				password: '',
 			},
 			rules: {
 				username: [{ validator: validateUser, trigger: 'blur' }],
-				pass: [{ validator: validatePass, trigger: 'blur' }],
+				password: [{ validator: validatePass, trigger: 'blur' }],
 			},
             loggedInUser: null
 		}
@@ -51,16 +50,13 @@ export default {
 	created() {},
 	methods: {
 		submitForm(credentials) {
-			this.loggedInUser = userService.login(credentials)
-			.then(() => {
-				this.$refs.push('/toy')
-			})
+			this.getLoggedInUser(credentials)
 		},
 		resetForm(formName) {
 			this.$refs[formName].resetFields()
 		},
-        getLoggedInUser() {
-            this.$emit('user', this.loggedInUser)
+        getLoggedInUser(user) {
+            this.$emit('user', user)
         }
 	},
 	computed: {},

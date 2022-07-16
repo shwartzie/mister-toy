@@ -10,12 +10,11 @@ const API =
     process.env.NODE_ENV !== "development"
         ? "/api/auth/"
         : "//localhost:3030/api/auth/"
-const STORAGE_KEY = 'loggedinUser'
+const STORAGE_KEY = 'loginToken'
 
 async function login(credentials) {
 	try {
-		const { data } = await axios.post(API + 'login', credentials)
-		const { user } = data
+		const { data: user } = await axios.post(API + 'login', credentials)
 		sessionStorage.setItem(STORAGE_KEY, JSON.stringify(user))
 		return user
 	} catch (err) {
@@ -36,7 +35,7 @@ async function signup(signupInfo) {
 
 function logout() {
 	sessionStorage.removeItem(STORAGE_KEY)
-	return axios.post('/api/logout')
+	return axios.post(API + 'logout')
 }
 
 function getLoggedInUser() {

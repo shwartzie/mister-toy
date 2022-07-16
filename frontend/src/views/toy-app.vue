@@ -4,7 +4,7 @@
             Add a new toy
         </el-button>
         <toy-filter @setFilter="setFilter" />
-        <toy-list @removeToy="removeToy" :toysToShow="toysToShow" />
+        <toy-list @removeToy="removeToy" :toysToShow="toysToShow" :user="user" />
         <toy-chart v-if="mappedLabels" :mappedLabels="mappedLabels" />
     </section>
 </template>
@@ -31,6 +31,9 @@ export default {
         toys() {
             return this.$store.getters.toys
         },
+        user() {
+            return this.$store.getters.user
+        }
     },
 
     methods: {
